@@ -3,6 +3,7 @@ package com.jpacourse.mapper;
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistence.entity.VisitEntity;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public final class VisitMapper {
             to.setDoctorFirstName(entity.getDoctor().getFirstName());
             to.setDoctorLastName(entity.getDoctor().getLastName());
         }
-        to.setTreatments(MedicalTreatmentMapper.mapToTOList(entity.getTreatments()));
+        to.setTreatments(MedicalTreatmentMapper.mapToTOList(entity.getMedicalTreatments()));
         return to;
     }
 
@@ -32,11 +33,11 @@ public final class VisitMapper {
         VisitEntity entity = new VisitEntity();
         entity.setId(to.getId());
         entity.setTime(to.getTime());
-        entity.setTreatments(MedicalTreatmentMapper.mapToEntityList(to.getTreatments()));
+        entity.setMedicalTreatments(MedicalTreatmentMapper.mapToEntityList(to.getTreatments()));
         return entity;
     }
 
-    public static List<VisitTO> mapToTOList(List<VisitEntity> entities) {
+    public static List<VisitTO> mapToTOList(Collection<VisitEntity> entities) {
         if (entities == null) {
             return null;
         }

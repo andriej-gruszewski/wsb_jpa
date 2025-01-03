@@ -5,7 +5,6 @@ import com.jpacourse.persistence.entity.DoctorEntity;
 import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

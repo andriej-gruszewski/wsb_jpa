@@ -73,6 +73,10 @@ public class VisitEntity {
 		return medicalTreatments;
 	}
 
+	public void setMedicalTreatments(Collection<MedicalTreatmentEntity> medicalTreatments) {
+		this.medicalTreatments = medicalTreatments;
+	}	
+
 	public void addMedicalTreatment(MedicalTreatmentEntity medicalTreatment) {
 		medicalTreatments.add(medicalTreatment);
 

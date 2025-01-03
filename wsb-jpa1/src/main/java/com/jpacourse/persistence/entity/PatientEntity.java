@@ -29,6 +29,7 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+	private Integer age;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "address_id")
@@ -93,6 +94,14 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public Integer getAge() {
+        return age;
+    }
+
+	public void setAge(Integer age) {
+        this.age = age;
+    }
+
 	public AddressEntity getAddress() {
 		return address;
 	}
@@ -103,6 +112,10 @@ public class PatientEntity {
 
 	public Collection<VisitEntity> getVisits() {
 		return visits;
+	}
+
+	public void setVisits(Collection<VisitEntity> visits) {
+		this.visits = visits;
 	}
 
 	public void addVisit(VisitEntity visit) {

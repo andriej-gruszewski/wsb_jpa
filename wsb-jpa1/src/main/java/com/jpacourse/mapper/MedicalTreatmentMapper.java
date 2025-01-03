@@ -2,6 +2,7 @@ package com.jpacourse.mapper;
 
 import com.jpacourse.dto.MedicalTreatmentTO;
 import com.jpacourse.persistence.entity.MedicalTreatmentEntity;
+import java.util.Collection;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public final class MedicalTreatmentMapper {
         return entity;
     }
 
-    public static List<MedicalTreatmentTO> mapToTOList(List<MedicalTreatmentEntity> entities) {
+    public static List<MedicalTreatmentTO> mapToTOList(Collection<MedicalTreatmentEntity> entities) {
         if (entities == null) {
             return null;
         }
