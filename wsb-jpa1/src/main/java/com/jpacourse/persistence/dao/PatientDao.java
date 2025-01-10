@@ -4,7 +4,14 @@ import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface PatientDao extends Dao<PatientEntity, Long> {
     VisitEntity addVisitToPatient(Long patientId, Long doctorId, LocalDateTime visitTime, String description);
+
+    List<PatientEntity> findByLastName(String lastName);
+
+    List<PatientEntity> findByVisitsCountBiggerThan(long x);
+
+    List<PatientEntity> findByAgeBiggerThan(int age);
 }

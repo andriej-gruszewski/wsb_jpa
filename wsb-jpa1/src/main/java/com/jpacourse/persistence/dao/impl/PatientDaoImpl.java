@@ -6,8 +6,10 @@ import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.TypedQuery;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao {
@@ -38,5 +40,35 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         // Zapisz zmiany kaskadowo poprzez merge pacjenta
         entityManager.merge(patient);
         return visit;
+    }
+
+    @Override
+    public List<PatientEntity> findByAgeBiggerThan(int age) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE p.age > :age",
+                PatientEntity.class
+        );
+        query.setParameter("age", age);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findByVisitsCountBiggerThan(long x) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE SIZE(p.visits) > :x",
+                PatientEntity.class
+        );
+        query.setParameter("x", x);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findByLastName(String lastName) {
+        TypedQuery<PatientEntity> query = entityManager.createQuery(
+                "SELECT p FROM PatientEntity p WHERE p.lastName = :lastName",
+                PatientEntity.class
+        );
+        query.setParameter("lastName", lastName);
+        return query.getResultList();
     }
 }
